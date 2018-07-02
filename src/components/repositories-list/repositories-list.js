@@ -1,12 +1,16 @@
 import React from 'react';
 
+import RepositoryCard from '../repository-card/repository-card.js';
+
+import './repositories-list.css';
+
 const RepositoriesList = props => {
   return (
-    <div className="RepositoriesList">
+    <div className="repositoriesList">
       {props.reposList.map(item => {
         return (
-          <div key={item.id} data={item}>
-            Card{' '}
+          <div className="repositoryItem" key={item.id}>
+            <RepositoryCard repositoryData={item} />
           </div>
         );
       })}

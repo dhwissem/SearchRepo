@@ -1,3 +1,8 @@
-.app {
+.header {
   text-align: center;
+}
+
+.content {
+  background: #6cbf84;
+  min-height: 100vh;
 }

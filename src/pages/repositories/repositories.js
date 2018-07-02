@@ -16,6 +16,12 @@ class Repositories extends React.PureComponent {
     };
   }
 
+  getResults = () => {
+    API.getRepos(this.state.value, 1, 6).then(data => {
+      data && this.setState({ reposList: data });
+    });
+  };
+
   handleChange = event => {
     this.setState({
       value: event.target.value
@@ -23,9 +29,7 @@ class Repositories extends React.PureComponent {
   };
 
   handleSubmit = () => {
-    API.getRepos('coding', 1, 6).then(data => {
-      data && this.setState({ reposList: data });
-    });
+    !!this.state.value && this.getResults();
   };
 
   render() {
