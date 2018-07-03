@@ -16,8 +16,20 @@ class Repositories extends React.PureComponent {
     };
   }
 
-  getResults = () => {
-    API.getRepos(this.state.value, 1, 6).then(data => {
+  componentDidMount() {
+    this.props.match.params.query &&
+      this.getResults(this.props.match.params.query);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    nextProps.match.params.query
+      ? nextProps.match.params.query !== this.props.match.params.query &&
+        this.getResults(nextProps.match.params.query)
+      : this.setState({ reposList: [] });
+  }
+
+  getResults = query => {
+    API.getRepos(query, 1, 6).then(data => {
       data && this.setState({ reposList: data });
     });
   };
@@ -29,7 +41,9 @@ class Repositories extends React.PureComponent {
   };
 
   handleSubmit = () => {
-    !!this.state.value && this.getResults();
+    const { value } = this.state;
+    const { history } = this.props;
+    value && history.push(`/search/${value}`);
   };
 
   render() {

@@ -17,6 +17,7 @@ class App extends Component {
         <div className="content">
           <Switch>
             <Route exact path="/" component={Repositories} />
+            <Route path="/search/:query?" component={Repositories} />
             <Route
               path="/contributors/:owner/:repository/"
               component={Contributors}
