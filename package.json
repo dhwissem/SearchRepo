@@ -2,7 +2,7 @@
   "name": "search_repos",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://jappaa.github.io/SearchRepo",
+  "homepage": ".",
   "dependencies": {
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
